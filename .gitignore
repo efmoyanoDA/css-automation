@@ -1,4 +1,9 @@
 node_modules
 screenshots
 
+# VS Code
 .DS_Store
+
+# Reports
+reports
+mochawesome-report
