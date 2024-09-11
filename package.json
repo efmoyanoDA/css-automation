@@ -1,0 +1,39 @@
+{
+  "name": "csp-automation",
+  "version": "1.0.0",
+  "description": "CSP Automation Suite",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open --config-file cypress.config.${CYPRESS_ENV}.ts",
+    "cy:run": "cypress run --config-file cypress.config.${CYPRESS_ENV}.ts",
+    "cy:open:local": "cypress open --config-file cypress.config.local.ts",
+    "cy:open:dev": "cypress open --config-file cypress.config.dev.ts",
+    "cy:open:qa": "cypress open --config-file cypress.config.qa.ts",
+    "cy:open:staging": "cypress open --config-file cypress.config.staging.ts",
+    "cy:run:local": "cypress run --config-file cypress.config.local.ts",
+    "cy:run:dev": "cypress run --config-file cypress.config.dev.ts",
+    "cy:run:qa": "cypress run --config-file cypress.config.qa.ts",
+    "cy:run:staging": "cypress run --config-file cypress.config.staging.ts",
+    "format": "prettier --write 'cypress/**/*.ts'",
+    "lint": "eslint 'cypress/**/*.ts'",
+    "lint:fix": "eslint 'cypress/**/*.ts' --fix",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "cypress": "^13.14.2",
+    "cypress-xpath": "^2.0.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-cypress": "^3.5.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2"
+  }
+}
