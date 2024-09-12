@@ -12,7 +12,7 @@
     "node": true
   },
   "rules": {
-    "quotes": ["error", "double"],
+    "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "no-extra-semi": "error",
     "prettier/prettier": "error"
