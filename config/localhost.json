@@ -1,0 +1,10 @@
+{
+  "baseUrl": "https://local.example.cypress.io",
+  "db": {
+    "host": "localhost",
+    "user": "postgres",
+    "password": "",
+    "database": "selfassesment",
+    "port": 5432
+  }
+}

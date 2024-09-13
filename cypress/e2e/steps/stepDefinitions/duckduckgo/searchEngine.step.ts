@@ -1,6 +1,7 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import HomePage from '../../src/pages/duckduckgo/HomePage';
 import SearchPage from '../../src/pages/duckduckgo/SearchPage';
+import { QueryDbResult } from '@support/custom';
 
 Given('I go to the Duckduckgo page', function () {
   this.home_page = new HomePage();
@@ -24,6 +25,16 @@ Then(
     this.search_page = new SearchPage();
     this.search_page.resultContain((elemText: string) => {
       expect(elemText).contains(text);
+    });
+    const title = 'Junior AQA';
+    cy.task(
+      'queryDb',
+      `SELECT * FROM qualification WHERE title = '${title}'`
+    ).then((result: QueryDbResult) => {
+      expect(result).to.have.length(1);
+      expect(result[0].description).to.equal(
+        'Junior qualification for qa automation'
+      );
     });
   }
 );
