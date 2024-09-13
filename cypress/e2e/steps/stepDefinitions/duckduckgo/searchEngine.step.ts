@@ -26,15 +26,37 @@ Then(
     this.search_page.resultContain((elemText: string) => {
       expect(elemText).contains(text);
     });
-    const title = 'Junior AQA';
-    cy.task(
-      'queryDb',
-      `SELECT * FROM qualification WHERE title = '${title}'`
-    ).then((result: QueryDbResult) => {
-      expect(result).to.have.length(1);
-      expect(result[0].description).to.equal(
-        'Junior qualification for qa automation'
-      );
+
+    const title = 'Junior QA';
+    cy.queryTable('qualification', `title = '${title}'`).then(
+      (result: QueryDbResult) => {
+        console.log(result);
+        expect(result).to.have.length(1);
+        expect(result[0].description).to.equal('Junior QA desc');
+      }
+    );
+
+    cy.queryDbExtensible({
+      table: 'qualification q',
+      columns: ['q.title', 'q.description', 'a.id AS ID'],
+      join: 'JOIN assessment a ON q.id = a.id',
+      where: `q.title = ${title}`,
+      // orderBy: 'q.created_at DESC',
+      limit: 1,
+    }).then((result) => {
+      expect(result).to.have.length(0);
+      //expect(result[0].description).to.equal('Junior qualification for qa automation');
     });
+
+    /*cy.deleteFromTableSafe({
+      table: 'qualification',
+      where: 'title = $1',
+      params: ['Junior AQA']
+    }).then(() => {
+      // Verify deletion
+      cy.queryTable('qualification', "title = 'Junior AQA'").then((result) => {
+        expect(result).to.have.length(0);
+      });
+    });*/
   }
 );

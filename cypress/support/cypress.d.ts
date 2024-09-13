@@ -17,5 +17,24 @@ declare namespace Cypress {
      * @param value - The message to log (though not currently used).
      */
     customLog(value: string): Chainable<null>;
+
+    /**
+     * Custom command to log a custom message to the Cypress console.
+     * @param tableName - Table name where to select data.
+     * @param whereClause - Where clause to filter data.
+     */
+    queryTable(tableName: string, whereClause: string): Chainable<null>;
+
+    /**
+     * Custom command to log a custom message to the Cypress console.
+     * @param options - Options to retrieve custom resultset.
+     */
+    queryDbExtensible(options: QueryOptions): Chainable<null>;
+
+    /**
+     * Custom command to log a custom message to the Cypress console.
+     * @param options - Options to retrieve custom resultset.
+     */
+    deleteFromTableSafe(options: DeleteOptions): Chainable<null>;
   }
 }
