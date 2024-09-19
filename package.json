@@ -12,9 +12,9 @@
     "cy:run:qa": "cross-env NODE_ENV=qa cypress run",
     "merge:reports": "mochawesome-merge cypress/reports/*.json > cypress/reports/report.json",
     "generate:report": "marge cypress/reports/report.json",
-    "format": "prettier --write 'cypress/**/*.ts'",
-    "lint": "eslint 'cypress/**/*.ts'",
-    "lint:fix": "eslint 'cypress/**/*.ts' --fix",
+    "format": "prettier --write cypress/**/*.ts",
+    "lint": "eslint cypress/**/*.ts",
+    "lint:fix": "eslint cypress/**/*.ts --fix",
     "prepare": "husky"
   },
   "keywords": [],
@@ -23,6 +23,7 @@
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^20.0.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "@faker-js/faker": "^9.0.1",
     "config": "^3.3.12",
     "cypress": "^13.6.2"
   },

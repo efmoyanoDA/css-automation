@@ -15,6 +15,7 @@
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "no-extra-semi": "error",
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "cypress/no-unnecessary-waiting": "off"
   }
 }

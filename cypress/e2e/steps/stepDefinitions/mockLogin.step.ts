@@ -2,7 +2,6 @@ import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import MockLoginPage from '../src/pages/Login/MockLoginPage';
 import HomePage from '../src/pages/HomePage/HomePage';
 
-
 Given('User is on CSP Home Page', function () {
   this.mockLogin_page = new MockLoginPage();
   this.mockLogin_page.open();
