@@ -67,3 +67,38 @@ Cypress.Commands.add('deleteFromTableSafe', (options: DeleteOptions) => {
 
   return cy.task('queryDbWithParams', { query, params });
 });
+
+Cypress.Commands.add(
+  'fillForm',
+  (
+    components: Record<string, Cypress.Chainable>,
+    formData: Record<string, object>,
+    wait: boolean = false
+  ) => {
+    Object.keys(components).forEach((key) => {
+      const component = components[key];
+      const value = formData[key];
+
+      if (value) {
+        component.then(($el) => {
+          if (
+            $el.attr('role') === 'combobox' ||
+            $el.hasClass('MuiSelect-select')
+          ) {
+            component.click();
+
+            cy.get(`[data-value="${value}"]`).click();
+            cy.get('body').type('{esc}');
+          } else {
+            component.click().wait(1000);
+
+            component.type(`${value}`, { delay: 10 });
+          }
+          if (wait) cy.wait(500);
+        });
+      }
+    });
+
+    return cy.wrap(null); // Ensure we return something to keep Cypress chainable
+  }
+);
