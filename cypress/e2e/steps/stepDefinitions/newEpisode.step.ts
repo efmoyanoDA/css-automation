@@ -18,6 +18,9 @@ When(
   }
 );
 
-When('User submit the episode', function () {});
+When('User submit the episode with only contact and notes', function () {
+  this.newEpisode_page.fillNotes();
+  this.newEpisode_page.submitEpisodeContactAndNotes();
+});
 
 Then('All fields should be recorded in the database', function () {});

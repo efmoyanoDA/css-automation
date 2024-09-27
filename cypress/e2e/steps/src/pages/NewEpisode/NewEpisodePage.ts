@@ -53,6 +53,16 @@ export default class NewEpisodePage {
     cy.fillForm(components, person, true);
   }
 
+  fillNotes(): void {
+    this.getNotesField().type('Submit Notes');
+  }
+
+  submitEpisodeContactAndNotes(): void {
+    this.getSubmitButton().click();
+    this.getSubmitContactAndNotesOption().click();
+    this.getConfirmSubmitButton().click();
+  }
+
   // Page Object Model for each field
   getFirstNameField() {
     return cy.xpath('//div[@data-testid="firstName"]//input[@type="text"]');
@@ -148,5 +158,23 @@ export default class NewEpisodePage {
 
   getEthnicityField() {
     return cy.get('#mui-component-select-ethnicity');
+  }
+
+  getNotesField() {
+    return cy.xpath("//textarea[@placeholder='Add Notes']");
+  }
+
+  getSubmitButton() {
+    return cy.get('[data-testid="interventions-submit"]');
+  }
+
+  getSubmitContactAndNotesOption() {
+    return cy.get('.MuiList-root > [tabindex="0"]');
+  }
+
+  getConfirmSubmitButton() {
+    return cy.xpath(
+      "(//div[contains(@class,'modalFooter MuiBox-root')]//button)[2]"
+    );
   }
 }

@@ -8,7 +8,7 @@ Feature: Login to CSP Application
   Scenario Outline: Create and submit new episode
     When User creates new episode
     And User fills all the required fields "<Concern>", "<CrisisLocation>", "<LocationType>"
-    And User submit the episode
+    And User submit the episode with only contact and notes
     Then All fields should be recorded in the database
 
     Examples:

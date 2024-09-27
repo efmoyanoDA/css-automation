@@ -59,7 +59,7 @@ declare namespace Cypress {
      */
     fillForm(
       components: Record<string, Cypress.Chainable>,
-      formData: Record<string, object>,
+      formData: Record<string>,
       wait: boolean
     ): Chainable<null>;
   }
